@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Axis Sanity Framework">
+ <listeners>
+<listener class-name="com.crm.listeners.CustomListener"/>
+
+
+</listeners>
+ 
+ 
+  
+    <test name="Account Creation ">
+		<classes>
+			<class name="com.crm.testcases.TC01_ToverifyAccountIsCreatedTest" />
+		</classes>
+	</test> <!-- Test -->
+    
+     
+  
+    
+    <test name="Lead Creation On Account">
+		<classes>
+			<class name="com.crm.testcases.TC02_ToverifyLeadIsCreatedOnAccountTest" />
+		</classes>
+	</test> <!-- Test -->
+	
+	 <test name="Activity Creation On Account">
+		<classes>
+			<class name="com.crm.testcases.TC03_ToverifyActivityCreatedOnAccountTest" />
+		</classes>
+	</test>
+	
+	
+	 <test name="New Offer Creation On Account">
+		<classes>
+			<class name="com.crm.testcases.TC04_ToverifyNewOfferCreatedOnAccountTest" />
+		</classes>
+	</test>
+	
+	<test name="Verify Tabs Visible On Account">
+		<classes>
+			<class name="com.crm.testcases.TC05_ToverifyTabsVisibleOnAccountTest" />
+		</classes>
+	</test>
+	<test name="Customer Search">
+		<classes>
+			<class name="com.crm.testcases.TC06_CustomerSearchTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Appointment Creation Page open">
+		<classes>
+			<class name="com.crm.testcases.TC07_ToverifyAppointmentCreationPageOpenTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Activity Created">
+		<classes>
+			<class name="com.crm.testcases.TC08_ToverifyActivityCreatedIndependentlyTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Activity Created Edited">
+		<classes>
+			<class name="com.crm.testcases.TC09_ToverifyCreatedActivityToBeEditedTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Pagination On Appointment Listing Page">
+		<classes>
+			<class name="com.crm.testcases.TC10_ToVerifyPaginationAndOrderByOnAppointmentListingTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Scheduled Appointment">
+		<classes>
+			<class name="com.crm.testcases.TC11_ToVerifyScheduledAppointmentTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="Category View Appointment">
+		<classes>
+			<class name="com.crm.testcases.TC12_ToVerfiyCategoryViewAppointmentTest" />
+		</classes>
+	</test>
+	<test name=" Activity Created closed">
+		<classes>
+			<class name="com.crm.testcases.TC13_ToverifyCreatedActivityClosedTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="Lead Creation Page Open">
+		<classes>
+			<class name="com.crm.testcases.TC14_ToverifyLeadCreationPageOpenTest" />
+		</classes>
+	</test>
+	
+	<test name="New Lead Created">
+		<classes>
+			<class name="com.crm.testcases.TC15_ToVerifyNewLeadCreatedTest" />
+		</classes>
+	</test>
+	<test name="Lead Search">
+		<classes>
+			<class name="com.crm.testcases.TC16_LeadSearchTest" />
+		</classes>
+	</test>
+	
+	<test name="Verify Edit Lead All Data Display In Edit Page">
+		<classes>
+			<class name="com.crm.testcases.TC17_ToVerifyEditLeadAllDataDisplayInEditPageTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Document Attachement On Lead Details Page">
+		<classes>
+			<class name="com.crm.testcases.TC18_ToverifyDocumentAttachementOnLeadDetailsPageTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Appointment Created On Lead">
+		<classes>
+			<class name="com.crm.testcases.TC19_ToverifyAppointmentCreatedOnLeadTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Task Created On Lead">
+		<classes>
+			<class name="com.crm.testcases.TC20_ToverifyTaskCreatedOnLeadTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Lead History Page">
+		<classes>
+			<class name="com.crm.testcases.TC21_ToverifyLeadHistoryPageTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Pagination And Order By On Lead Listing Page">
+		<classes>
+			<class name="com.crm.testcases.TC22_ToverifyPaginationAndOrderByOnLeadListingPageTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Category View Lead">
+		<classes>
+			<class name="com.crm.testcases.TC23_ToverifyCategoryViewLeadTest" />
+		</classes>
+	</test>
+	<test name="verify Offer Creation Page Open">
+		<classes>
+			<class name="com.crm.testcases.TC24_ToverifyOfferCreationPageOpenTest" />
+		</classes>
+	</test>
+	<test name="verify OfferCreation">
+		<classes>
+			<class name="com.crm.testcases.TC25_ToverifyOfferCreationTest" />
+		</classes>
+	</test>
+	
+	<test name="Verify on Edit Offers All data Display In Edit Page">
+		<classes>
+			<class name="com.crm.testcases.TC26_ToVerifyonEditOffersAlldataDisplayInEditPageTest" />
+		</classes>
+	</test>
+	<test name="verify SR Is Getting Created">
+		<classes>
+			<class name="com.crm.testcases.TC27_ToverifySRIsGettingCreatedTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="verify SR Is Assigned To User">
+		<classes>
+			<class name="com.crm.testcases.TC28_ToVerifySRIsAssignedToUserTest" />
+		</classes>
+	</test>
+	
+	<test name="verify SR Visible In Views">
+		<classes>
+			<class name="com.crm.testcases.TC29_ToVerifySRVisibleInViewsTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify SR Search">
+		<classes>
+			<class name="com.crm.testcases.TC30_ToVerifySRSearchTest" />
+		</classes>
+	</test>
+	
+	<test name="verify SR Edited by Assigned to user">
+		<classes>
+			<class name="com.crm.testcases.TC31_TOverifySREditedByAssignedUserTest" />
+		</classes>
+	</test>
+	
+	<test name="verify SR History Page">
+		<classes>
+			<class name="com.crm.testcases.TC32_ToVerifySRHistoryPageTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Dedupe">
+		<classes>
+			<class name="com.crm.testcases.TC33_ToVerifyDedupeRuleTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Import Functionality">
+		<classes>
+			<class name="com.crm.testcases.TC34_ToVerifyImportFunctionalityTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="verify Calendar Appointment">
+		<classes>
+			<class name="com.crm.testcases.TC35_ToVerifyCalendarAppointmentCreationTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Task Creation">
+		<classes>
+			<class name="com.crm.testcases.TC36_ToverifyTaskCreationTest" />
+		</classes>
+	</test>
+	<test name="verify Alerts">
+		<classes>
+			<class name="com.crm.testcases.TC37_ToverifyAlertsTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Conditional Access">
+		<classes>
+			<class name="com.crm.testcases.TC38_ToverifyConditionalAccessTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="verify CustomAction Button">
+		<classes>
+			<class name="com.crm.testcases.TC39_ToverifyCustomActionButtonTest" />
+		</classes>
+	</test>
+	
+	<test name="verify StandardSRProcess">
+		<classes>
+			<class name="com.crm.testcases.TC40_ToverifyStandardSRProcessTest" />
+		</classes>
+	</test>
+	
+	
+	
+	
+	<test name="verify ListOfReports">
+		<classes>
+			<class name="com.crm.testcases.TC41_ToVerifyListOfReportsDisplayTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Reports Open">
+		<classes>
+			<class name="com.crm.testcases.TC42_ToVerifyReportsOpenProperlyTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="verify Execute Records Reports ">
+		<classes>
+			<class name="com.crm.testcases.TC43_ToVerifyExecuteRecordsReportTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Reports Added to quick links">
+		<classes>
+			<class name="com.crm.testcases.TC44_ToVerifyReportsAddedToQuickLinksTest" />
+		</classes>
+	</test>
+	
+	
+	
+	<test name="verify ComposeEmail">
+		<classes>
+			<class name="com.crm.testcases.TC45_VerfyEmailSentToExistingSRTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Data Presenter EDs">
+		<classes>
+			<class name="com.crm.testcases.TC46_VerifyDataPresenterTest" />
+		</classes>
+	</test>
+	
+	
+	<test name="verify Summary Page">
+		<classes>
+			<class name="com.crm.testcases.TC47_ToVerifySummaryPageTest" />
+		</classes>
+	</test>
+	
+	<test name="verify Reports Filters">
+		<classes>
+			<class name="com.crm.testcases.TC48_ToVerfiyListOfFilterDisplayInReportsTest" />
+		</classes>
+	</test>
+</suite> <!-- Suite -->

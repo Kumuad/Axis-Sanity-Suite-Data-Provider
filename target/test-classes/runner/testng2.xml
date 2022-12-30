@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Axis Sanity Framework">
+	<listeners>
+		<listener class-name="com.crm.listeners.CustomListener" />
+
+
+	</listeners>
+
+   
+	
+	<test name="verify SR History Page">
+		<classes>
+			<class name="com.crm.testcases.TC32_ToVerifySRHistoryPageTest" />
+		</classes>
+	</test>
+	
+	<test name="verify StandardSRProcess">
+		<classes>
+			<class name="com.crm.testcases.TC40_ToverifyStandardSRProcessTest" />
+		</classes>
+	</test>
+	<test name="verify Data Presenter EDs">
+		<classes>
+			<class name="com.crm.testcases.TC46_VerifyDataPresenterTest" />
+		</classes>
+	</test>
+	
+	
+</suite> <!-- Suite -->

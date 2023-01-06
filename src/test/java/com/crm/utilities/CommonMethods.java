@@ -61,7 +61,18 @@ public class CommonMethods extends TestBase {
 	public static Actions a;
 	public static WebDriverWait wait;
 	public static Properties prop = new Properties();
-
+	
+	
+	public static void ExplicitWait(String locator) throws InterruptedException, UnhandledException, IOException {
+		wait = new WebDriverWait(driver, Duration.ofMinutes(Integer.parseInt(prop.getProperty("WaitInMin"))));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CommonMethods.readPropertyFile(locator))));
+	}
+	
+	//Explicit wait
+		public static void ExplicitWaitListOfElements(String locator) throws InterruptedException, UnhandledException, IOException {
+			wait = new WebDriverWait(driver, Duration.ofMinutes(Integer.parseInt(prop.getProperty("WaitInMin"))));
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(CommonMethods.readPropertyFile(locator))));
+		}
 	// to scroll down the page by pixel values as Y-coordiante
 	public static void scrollDown(int y) {
 		js = (JavascriptExecutor) driver;
@@ -309,36 +320,62 @@ public class CommonMethods extends TestBase {
 		}
 	}
 
-	public static void PickerSelect(String value) throws IOException, InterruptedException {
-		Thread.sleep(4000);
-		String data = value;
-
+//	public static void PickerSelect(String value) throws IOException, InterruptedException {
+//		Thread.sleep(4000);
+//		String data = value;
+//
+//		try {
+//
+//			// element = driver.findElement(By.xpath("//td[contains(text(),'" + data +
+//			// "')]"));
+//			element = driver.findElement(By.xpath("//td[text() = '" + data + "']"));
+//
+//			// element = driver.findElement(By.xpath("//td[contains(translate(text(),'" +
+//			// data + "']"));
+//
+//			System.out.println(data);
+//
+//			element.click();
+//
+//			// CommonMethods.clickelementbyjavascript("")
+//			// .info("Selected " + data);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+	public static void PickerSelect(String locator,String value) throws IOException, InterruptedException {
+		//Thread.sleep(5000);
+		ExplicitWaitListOfElements(locator);
 		try {
 
-			// element = driver.findElement(By.xpath("//td[contains(text(),'" + data +
-			// "')]"));
-			element = driver.findElement(By.xpath("//td[text() = '" + data + "']"));
+			//List<WebElement> list = driver
+					//.findElements(By.xpath("//div[@class='griddle-body shadow-4 autocomplete-table'] //td"));
+			List<WebElement> list = driver.findElements(By.xpath(CommonMethods.readPropertyFile(locator)));
+			for (WebElement e : list) {
 
-			// element = driver.findElement(By.xpath("//td[contains(translate(text(),'" +
-			// data + "']"));
+				String listvalue = e.getText();
+				System.out.println(listvalue);
+				if (listvalue.equalsIgnoreCase(value)) {
+					e.click();
+					break;
+				}
 
-			System.out.println(data);
+			}
 
-			element.click();
-
-			// CommonMethods.clickelementbyjavascript("")
-			// .info("Selected " + data);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
+	
 	/// to select first selected option from dropdown
 	public static String getFirstSelectedOption(String locator) throws Exception {
 
-		ExWait(locator);
+		ExplicitWait(locator);
 		WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 		Select sel = new Select(element);
 		String text = sel.getFirstSelectedOption().getText();
@@ -478,12 +515,12 @@ public class CommonMethods extends TestBase {
 	}
 
 	// *******************************Common utilities***************************
-	// Explicit Wait
-	public static void ExWait(String locator) throws Exception {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		// wait= new WebDriverWait(driver,Duration.ofSeconds(60));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CommonMethods.readPropertyFile(locator))));
-	}
+//	// Explicit Wait
+//	public static void ExWait(String locator) throws Exception {
+//		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		// wait= new WebDriverWait(driver,Duration.ofSeconds(60));
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CommonMethods.readPropertyFile(locator))));
+//	}
 
 	// keys enter
 	public static void KeysEnter(String locator) {
@@ -499,9 +536,9 @@ public class CommonMethods extends TestBase {
 			log.info("Keys Entered on " + locator);
 
 		} catch (Exception e) {
-			log.error("Keys Entered on  " + locator);
+			log.error("Keys not Entered on  " + locator);
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Keys not Entered on"+locator);
 		}
 
 	}
@@ -509,7 +546,7 @@ public class CommonMethods extends TestBase {
 	// CLick Element
 	public static void Click(String locator) {
 		try {
-			ExWait(locator);
+			ExplicitWait(locator);
 			if (locator.endsWith("_XPATH")) {
 				driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).click();
 			} else if (locator.endsWith("_ID")) {
@@ -522,7 +559,7 @@ public class CommonMethods extends TestBase {
 		} catch (Exception e) {
 			log.error("Not Sucessfully clicked on " + locator + " due to :" + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Not Sucessfully clicked on " +locator);
 		}
 	}
 
@@ -543,7 +580,7 @@ public class CommonMethods extends TestBase {
 		} catch (Exception e) {
 			log.error("Data Not Sucessfully entered on " + locator + " due to :" + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Data Not Sucessfully entered on"+locator);
 		}
 	}
 
@@ -573,11 +610,18 @@ public class CommonMethods extends TestBase {
 
 	// to get element text
 	public static String getElementText(String locator) throws Exception {
-		ExWait(locator);
-		String txtMsg = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).getText();
+		
+		String txtMsg=null;
+		try {
+		ExplicitWait(locator);
+		 txtMsg = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).getText();
 		log.info("Data sucessfully extracted on " + locator + " = " + txtMsg);
 		CustomListener.extentInfo("Data extracted on " + locator, " = " + txtMsg);
-
+		}
+		catch(Exception e) {
+			log.error("Data Not Sucessfully extracted " + locator + " due to :" + e.getMessage());
+			Assert.fail("Data Not Sucessfully extracted"+locator);
+		}
 		return txtMsg;
 	}
 
@@ -592,7 +636,7 @@ public class CommonMethods extends TestBase {
 
 	// to get Element value
 	public static String getElementValue(String locator) throws Exception {
-		ExWait(locator);
+		ExplicitWait(locator);
 		String elementValue = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)))
 				.getAttribute("value");
 		CustomListener.extentInfo("Data extracted on " + locator, " = " + elementValue);
@@ -603,7 +647,7 @@ public class CommonMethods extends TestBase {
 
 	// To highlight selected webelement
 	public static void highlightelement(String locator) throws Exception {
-		ExWait(locator);
+		ExplicitWait(locator);
 		js = (JavascriptExecutor) driver;
 		WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 		js.executeScript("arguments[0].style.border='4px solid yellow'", element);
@@ -621,7 +665,7 @@ public class CommonMethods extends TestBase {
 		WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 		Select sel = new Select(element);
 		try {
-			ExWait(locator);
+			ExplicitWait(locator);
 			String text = excel.getCellData(sheetName, colName, rowNum);
 			sel.selectByVisibleText(text);
 			log.info("Data = " + text + " Sucessfully Selected from dropdown " + locator);
@@ -637,6 +681,7 @@ public class CommonMethods extends TestBase {
 	// select by text
 	public static void selectByText(String locator, String text) {
 		try {
+			ExplicitWait(locator);
 			WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 			Select sel = new Select(element);
 			sel.selectByVisibleText(text);
@@ -646,7 +691,7 @@ public class CommonMethods extends TestBase {
 		} catch (Exception e) {
 			log.error("Not able to select from dropdown " + locator + "due to " + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Not able to select from dropdown "+locator);
 		}
 
 	}
@@ -655,18 +700,19 @@ public class CommonMethods extends TestBase {
 	public static void selectByValue(String locator, String sheetName, String colName, int rowNum)
 			throws InterruptedException, EncryptedDocumentException, IOException {
 		try {
+			
 			WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 			String value = excel.getCellData(sheetName, colName, rowNum);
 
 			Select sel = new Select(element);
-			ExWait(locator);
+			ExplicitWait(locator);
 			sel.selectByValue(value);
 			log.info("Data = " + value + " Sucessfully Selected from dropdown " + locator);
 			CustomListener.extentInfo("Element Selected  ", locator);
 		} catch (Exception e) {
 			log.error("Not able to select from dropdown " + locator + "due to " + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Not able to select from dropdown"+locator);
 		}
 	}
 
@@ -675,14 +721,14 @@ public class CommonMethods extends TestBase {
 		try {
 			WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 			Select sel = new Select(element);
-			ExWait(locator);
+			ExplicitWait(locator);
 			sel.selectByIndex(index);
 			log.info("Data = " + index + " Sucessfully Selected from dropdown " + locator);
 			CustomListener.extentInfo("Element Selected  ", locator);
 		} catch (Exception e) {
 			log.error("Not able to select from dropdown " + locator + "due to " + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Not able to select from dropdown"+locator);
 		}
 	}
 
@@ -690,7 +736,7 @@ public class CommonMethods extends TestBase {
 	public static void mouseHover(String locator) throws Exception {
 		try {
 			a = new Actions(driver);
-			ExWait(locator);
+			ExplicitWait(locator);
 			highlightelement(locator);
 			WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 
@@ -699,7 +745,7 @@ public class CommonMethods extends TestBase {
 		} catch (Exception e) {
 			log.error("Unable to mouse hover due to " + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Unable to mouse hover due to " +locator);
 		}
 
 	}
@@ -708,7 +754,7 @@ public class CommonMethods extends TestBase {
 	public static void mouseClick(String locator) throws Exception {
 		try {
 			a = new Actions(driver);
-			ExWait(locator);
+			ExplicitWait(locator);
 			highlightelement(locator);
 			WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 
@@ -717,14 +763,14 @@ public class CommonMethods extends TestBase {
 		} catch (Exception e) {
 			log.error("Not able to Mouseclick due to " + e.getMessage());
 			CustomListener.testReport.get().log(Status.FAIL, "Element Not Displayed : " + locator);
-			Assert.fail(locator);
+			Assert.fail("Not able to Mouseclick due to " +locator);
 		}
 
 	}
 
 	// to verify Element is present
-	public static void isElementDisplayed(String locator) throws UnhandledException, IOException {
-
+	public static void isElementDisplayed(String locator) throws UnhandledException, IOException, InterruptedException {
+		//ExplicitWait(locator);
 		boolean element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).isDisplayed();
 		Assert.assertTrue(element, "element not dispalyed");
 		log.info("Element is Displayed On UI" + locator);
@@ -736,6 +782,7 @@ public class CommonMethods extends TestBase {
 	public static void iselementDisplayed(String locator) throws Exception {
 
 		CommonMethods.scrollByVisibilityofElement(locator);
+		//ExplicitWait(locator);
 		boolean status = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).isDisplayed();
 		Assert.assertTrue(status, "Element is displayed");
 		log.info("Element is displayed  " + locator);
@@ -746,6 +793,7 @@ public class CommonMethods extends TestBase {
 	// to verify Element is present
 	public static boolean isElementPresent(String locator) throws Exception, IOException {
 		try {
+			//ExplicitWait(locator);
 			driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).isDisplayed();
 			return true;
 		} catch (NoSuchElementException e) {
@@ -756,6 +804,7 @@ public class CommonMethods extends TestBase {
 
 	// verify exp status code on Details pAge
 	public static String expStatusCode(String locator, String expstatuscode) throws Exception, IOException {
+		ExplicitWait(locator);
 		WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 		String actualstatuscode = element.getText();
 
@@ -770,6 +819,7 @@ public class CommonMethods extends TestBase {
 
 	// verify exp status code on Details pAge
 	public static String expAssignedTo(String locator, String expsassignedto) throws Exception, IOException {
+		ExplicitWait(locator);
 		WebElement element = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 		String actualassignedTo = element.getText();
 
@@ -836,6 +886,7 @@ public class CommonMethods extends TestBase {
 
 	// to clear text
 	public static void clear(String locator) throws Exception, IOException {
+		ExplicitWait(locator);
 		driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).clear();
 
 	}
@@ -880,7 +931,7 @@ public class CommonMethods extends TestBase {
 
 	// to get element text
 	public static String getInnerHtml(String locator) throws Exception {
-		ExWait(locator);
+		ExplicitWait(locator);
 		String txtMsg = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).getAttribute("innerHTML");
 		// System.out.println("String: "+txtMsg);
 		log.info("Data sucessfully extracted on " + locator + " = " + txtMsg);
@@ -891,7 +942,7 @@ public class CommonMethods extends TestBase {
 
 	// enter text by java script
 	public static void Entertextbyjavascript(String locator, String Text) throws Exception, IOException {
-
+		ExplicitWait(locator);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		WebElement email = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
@@ -902,7 +953,7 @@ public class CommonMethods extends TestBase {
 
 	// Tab out
 	public static void enterTAB(String locator) throws Exception, IOException {
-
+		ExplicitWait(locator);
 		WebElement entertab = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator)));
 
 		entertab.sendKeys(Keys.TAB);
@@ -957,7 +1008,7 @@ public class CommonMethods extends TestBase {
 	}
 
 	public static String getAttribute(String locator) throws Exception {
-		ExWait(locator);
+		ExplicitWait(locator);
 		String txtMsg = driver.findElement(By.xpath(CommonMethods.readPropertyFile(locator))).getAttribute("value");
 		// System.out.println("String: "+txtMsg);
 		log.info("Data sucessfully extracted on " + locator + " = " + txtMsg);

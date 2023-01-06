@@ -171,7 +171,7 @@ public class OffersAndLeadPage extends TestBase {
 		CommonMethods.scrollByVisibilityofElement("offerProduct_XPATH");
 		Thread.sleep(2000);
 		CommonMethods.sendkeys("offerProduct_XPATH", Product);
-		CommonMethods.PickerSelect(Product);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Product);
 		
 		Thread.sleep(2000);
 		//select subproduct

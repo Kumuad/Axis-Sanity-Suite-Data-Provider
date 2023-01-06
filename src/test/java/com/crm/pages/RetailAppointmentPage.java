@@ -235,10 +235,10 @@ public class RetailAppointmentPage extends TestBase {
 	public void clickOnArrowButton() throws Exception {
 		Thread.sleep(1000);
 
-		CommonMethods.highlightelement("arrowbuttonRetailAppointmentPage_XPATH");
+		//CommonMethods.highlightelement("arrowbuttonRetailAppointmentPage_XPATH");
 		Thread.sleep(2000);
-		CommonMethods.clickelementbyjavascript("arrowbuttonRetailAppointmentPage_XPATH");
-
+		//CommonMethods.clickelementbyjavascript("arrowbuttonRetailAppointmentPage_XPATH");
+         CommonMethods.mouseClick("arrowbuttonRetailAppointmentPage_XPATH");
 	}
 
 	// Mouse Hover On Appointment Close Edit link in Views

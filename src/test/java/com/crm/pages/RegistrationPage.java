@@ -96,28 +96,28 @@ public class RegistrationPage extends TestBase {
 		CommonMethods.sendkeys("function_XPATH", Function);
 		// String Functiontext=ExcelUtils.getCellData(servicerequest_sheetname,
 		// "Function", 1);
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 		// Thread.sleep(2000);
 
 		// Enter SubFunction
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
 		// String SubFunctiontext=ExcelUtils.getCellData(servicerequest_sheetname,
 		// "SubFunction", 1);
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 		// Thread.sleep(2000);
 
 		// Enter SubSubFunction
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
 		// String SubSubFunctiontext=ExcelUtils.getCellData(servicerequest_sheetname,
 		// "SubSubFunction", 1);
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 		Thread.sleep(2000);
 
 		// Select Nature of query
 		CommonMethods.sendkeys("NatureOfQuery_XPATH", NatureofQuery);
 		// String NatureOfQueryText=ExcelUtils.getCellData(servicerequest_sheetname,
 		// "NatureofQuery", 1);
-		CommonMethods.PickerSelect(NatureofQuery);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",NatureofQuery);
 		Thread.sleep(1000);
 		CommonMethods.scrollDown(700);
 
@@ -200,27 +200,27 @@ public class RegistrationPage extends TestBase {
 		// Enter Function
 		CommonMethods.sendkeys("function_XPATH", Function);
 		// String Functiontext = ExcelUtils.getCellData(sheetname, "Function", 1);
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 		// Thread.sleep(2000);
 
 		// Enter SubFunction
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
 		// String SubFunctiontext = ExcelUtils.getCellData(sheetname, "SubFunction", 1);
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 		// Thread.sleep(2000);
 
 		// Enter SubSubFunction
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
 		// String SubSubFunctiontext = ExcelUtils.getCellData(sheetname,
 		// "SubSubFunction", 1);
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 		// Thread.sleep(2000);
 
 		// Select Nature of query
 		CommonMethods.sendkeys("NatureOfQuery_XPATH", NatureofQuery);
 		// String NatureOfQueryText = ExcelUtils.getCellData(sheetname,
 		// "NatureofQuery",1);
-		CommonMethods.PickerSelect(NatureofQuery);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",NatureofQuery);
 		Thread.sleep(1000);
 		CommonMethods.scrollDown(700);
 
@@ -294,24 +294,24 @@ public class RegistrationPage extends TestBase {
 		// Enter Function
 		CommonMethods.sendkeys("function_XPATH", Function);
 
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 
 		// Enter Sub Function
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
 
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 
 		// Enter Sub SubFunction
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
 
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 
 		// Select Nature of query
 		CommonMethods.selectByText("NatureOfQuerydropdown_XPATH", NatureOfQuery);
 
 		// Enter Type Of Request
 		CommonMethods.sendkeys("typeofrequest_XPATH", TypeofRequest);
-		CommonMethods.PickerSelect(TypeofRequest);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",TypeofRequest);
 
 		// Enter client id
 		String clientid = CommonMethods.generateRandomclientID();
@@ -469,23 +469,23 @@ public class RegistrationPage extends TestBase {
 		// Enter Product
 		CommonMethods.sendkeys("Product_XPATH", Product);
 		// String productText = ExcelUtils.getCellData(sheetname, "Product", 1);
-		CommonMethods.PickerSelect(Product);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Product);
 
 		// Enter Function
 		CommonMethods.sendkeys("function_XPATH", Function);
 		// String Functiontext = ExcelUtils.getCellData(sheetname, "Function", 1);
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 
 		// Enter SubFunction
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
 		// String SubFunctiontext = ExcelUtils.getCellData(sheetname, "SubFunction", 1);
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 
 		// Enter SubSubFunction
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
 		// String SubSubFunctiontext = ExcelUtils.getCellData(sheetname,
 		// "SubSubFunction", 1);
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 
 		// Select Nature of query
 		CommonMethods.selectByText("NatureOfQuerydropdown_XPATH", NatureofQuery);
@@ -548,24 +548,24 @@ public class RegistrationPage extends TestBase {
 
 		// Select Product
 		CommonMethods.sendkeys("Product_XPATH", Product);
-		CommonMethods.PickerSelect(Product);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Product);
 		Thread.sleep(2000);
 
 		// Enter Function
 		CommonMethods.sendkeys("function_XPATH", Function);
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 		Thread.sleep(2000);
 
 		// Enter SubFunction
 
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 		Thread.sleep(2000);
 
 		// Enter SubSubFunction
 
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 		Thread.sleep(2000);
 
 		// Select Nature of query
@@ -668,22 +668,22 @@ public class RegistrationPage extends TestBase {
 		// Enter Product
 		CommonMethods.sendkeys("Product_XPATH", Product);
 
-		CommonMethods.PickerSelect(Product);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Product);
 
 		// Enter Function
 		CommonMethods.sendkeys("function_XPATH", Function);
 
-		CommonMethods.PickerSelect(Function);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",Function);
 
 		// Enter SubFunction
 		CommonMethods.sendkeys("subFunction_XPATH", SubFunction);
 
-		CommonMethods.PickerSelect(SubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubFunction);
 
 		// Enter SubSubFunction
 		CommonMethods.sendkeys("subsubFunction_XPATH", SubSubFunction);
 
-		CommonMethods.PickerSelect(SubSubFunction);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",SubSubFunction);
 
 		// Select Nature of query
 		CommonMethods.selectByText("NatureOfQuerydropdown_XPATH", NatureofQuery);

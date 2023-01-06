@@ -114,7 +114,7 @@ public class TeamExecutivesPage extends TestBase {
 	// click on Closure Button
 	public void selectsubstatus(String text) throws IOException, InterruptedException {
 		CommonMethods.sendkeys("TeamExecutivesubstatustextbox_XPATH", text);
-		CommonMethods.PickerSelect(text);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",text);
 
 	}
 

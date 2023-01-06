@@ -144,7 +144,7 @@ public class CalendarPage extends TestBase {
 		//Enter Client Segment code
 		//String clientsegemntcode=ExcelUtils.getCellData(sheetname, "ClientSegmentCode", 1);
 		CommonMethods.sendkeys("clientsegmentcodetextbox_XPATH", ClientSegmentCode);
-		CommonMethods.PickerSelect(ClientSegmentCode);
+		CommonMethods.PickerSelect("pickerSelect_XPATH",ClientSegmentCode);
 		
 		//click On Save Button
 		CommonMethods.Click("saveButton_XPATH");

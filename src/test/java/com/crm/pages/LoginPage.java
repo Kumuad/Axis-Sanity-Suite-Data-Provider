@@ -42,7 +42,7 @@ public class LoginPage extends TestBase {
 		
 		//click on login Button
 		CommonMethods.Click("LoginButton_XPATH");
-		
+		Thread.sleep(3000);
 		
 	}
 	

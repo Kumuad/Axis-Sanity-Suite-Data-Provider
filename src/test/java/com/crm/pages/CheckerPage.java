@@ -2,6 +2,7 @@ package com.crm.pages;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.UnhandledException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -112,7 +113,7 @@ public class CheckerPage extends TestBase{
 		
 		//verify Conditional Access denied message
 		
-		public void verifyConditionalAccessDeniedMsg() throws IOException {
+		public void verifyConditionalAccessDeniedMsg() throws IOException, UnhandledException, InterruptedException {
 			
 			CommonMethods.isElementDisplayed("accessdeniedmsg_XPATH");
 			
